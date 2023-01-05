@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4c38aa2-f261-48e4-b67d-4fe4d7de1db2" name="Changes" comment="Работа с ООП" />
+    <list default="true" id="f4c38aa2-f261-48e4-b67d-4fe4d7de1db2" name="Changes" comment="Работа с ООП">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calc.php" beforeDir="false" afterPath="$PROJECT_DIR$/calc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nessaryFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/nessaryFunction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/интерфейс-ООП.php" beforeDir="false" afterPath="$PROJECT_DIR$/интерфейс-ООП.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/статик-ООП.php" beforeDir="false" afterPath="$PROJECT_DIR$/статик-ООП.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,20 +35,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Рустамчон/Desktop/OOP&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "H:/OSPanel/domains/localhost/Session.php",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,6 +72,11 @@
       <workItem from="1672774920551" duration="505000" />
       <workItem from="1672775450343" duration="3216000" />
       <workItem from="1672838406701" duration="2787000" />
+      <workItem from="1672845130288" duration="1160000" />
+      <workItem from="1672846317722" duration="1498000" />
+      <workItem from="1672847847398" duration="4436000" />
+      <workItem from="1672857134206" duration="9298000" />
+      <workItem from="1672913189906" duration="3253000" />
     </task>
     <task id="LOCAL-00001" summary="Работа с ООП">
       <created>1672604467291</created>

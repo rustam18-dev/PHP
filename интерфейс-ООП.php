@@ -8,7 +8,7 @@ interface Walkable
 
 interface Sleepable
 {
-    public function sleep(int $seconds);
+     function sleep(int $seconds);
 }
 
 interface Animal extends Walkable, Sleepable
