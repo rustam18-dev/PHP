@@ -8,7 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Заголовок сайта</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quae veniam voluptatum.</p>
+    <h1>Заголовок сайта</h1>
 </body>
 </html>
