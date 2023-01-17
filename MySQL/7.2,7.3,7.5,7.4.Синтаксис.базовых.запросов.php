@@ -13,7 +13,7 @@ if (mysqli_connect_errno()) {
 } else {
     $result = mysqli_query(
         $connect,
-        "select products.name as 'Название продукта', count, price, stock_id, stock.name as 'Название склада' from products left join stock on stock_id = stock.id");
+        "select products.name as 'Название продукта' from products");
 //    var_export($result);
 while ($row = mysqli_fetch_assoc($result)) {
     var_export($row);

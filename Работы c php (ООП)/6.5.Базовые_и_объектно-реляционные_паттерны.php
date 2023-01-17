@@ -234,7 +234,7 @@ class IdentityMap
     }
 }
 
-class UserMapper
+class UserMappers
 {
     private $adapter;
     private $identityMap;
@@ -268,6 +268,8 @@ class UserMapper
         return User::fromState($row);
     }
 }
+
+$user = new UserMapper();
 
 
 
