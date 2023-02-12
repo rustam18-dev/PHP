@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\TaskCreated;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,9 +15,12 @@ class Task extends \Illuminate\Database\Eloquent\Model
 {
     use HasFactory;
 
-//    public $fillable = ['title', 'body', 'owner_id']; // снимает защиту с массивов
+//   public $fillable = ['title', 'body', 'owner_id']; // снимает защиту с массивов
     public $guarded = [];
 
+    protected $dispatchesEvents = [
+        'created' => TaskCreated::class,
+    ];
 
     public function getRouteKeyName(): string
     {

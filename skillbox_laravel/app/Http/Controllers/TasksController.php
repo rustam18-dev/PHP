@@ -83,7 +83,9 @@ class TasksController extends Controller
     //TODO: можно сократить ещё
         $task = Task::create($attributes);
 
-        event(new TaskCreated($task));
+//        event(new TaskCreated($task));
+
+        flash('Задача успешно создана!');
 
         return redirect('/tasks');
 
@@ -145,6 +147,9 @@ class TasksController extends Controller
 
         $task->tags()->sync($syncIds);
 
+        flash('Задача успешно обновлена!');
+
+
         return redirect('/tasks');
 
     }
@@ -152,6 +157,8 @@ class TasksController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
+
+        flash('Задача успешно удалена!' , 'warning');
 
         return redirect('/tasks');
     }

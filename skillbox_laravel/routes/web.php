@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
 use App\Task;
 
+
+
 //app()->singleton(Pushall::class, function () {
 //
 //    return new Pushall('private-key');
@@ -27,6 +29,18 @@ use App\Task;
 
 // Идентичен верхней записи
 Route::view('/', 'welcome');
+
+//Route::get('/test', function (\Illuminate\Http\Request $request) {
+//
+////    session()->forget(['name']); // Удаляет сессии
+////    session()->has(['name']); // bool
+//
+//    dd($request->session()->all());
+//
+//    return session('test', 'deasd');
+//});
+
+
 
 /**
  * GET /tasks (index)
