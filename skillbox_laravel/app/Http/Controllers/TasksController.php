@@ -158,7 +158,7 @@ class TasksController extends Controller
     {
         $task->delete();
 
-        flash('Задача успешно удалена!' , 'warning');
+        flash('Задача успешно удалена!', 'warning');
 
         return redirect('/tasks');
     }

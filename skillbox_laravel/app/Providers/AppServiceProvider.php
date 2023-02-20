@@ -5,6 +5,9 @@ namespace App\Providers;
 use App\Service\Pushall;
 use App\Tag;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Ramsey\Collection\Collection;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,11 +16,14 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function register()
     {
-//        $this->app->singleton('example', function () {
-//            return 'hello';
-//        });
+        \Illuminate\Support\Collection::macro('toUpper', function () {
+            return $this->map(function (string $value) {
+                return Str::upper($value);
+            });
+        });
     }
 
     /**
@@ -31,4 +37,5 @@ class AppServiceProvider extends ServiceProvider
             $view->with('tagsCloud', Tag::tagsCloud());
         });
     }
+
 }

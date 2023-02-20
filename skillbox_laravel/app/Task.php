@@ -4,6 +4,7 @@ namespace App;
 
 use App\Events\TaskCreated;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -46,4 +47,33 @@ class Task extends \Illuminate\Database\Eloquent\Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function isCompleted()
+    {
+        return (bool) $this->completed;
+    }
+
+    public function isNotCompleted()
+    {
+        return ! $this->completed;
+    }
+
+    public function newCollection(array $models = [])
+    {
+        return new class($models) extends Collection {
+            public function allCompleted()
+            {
+                return $this->filter->isCompleted();
+            }
+
+            public function allNotCompleted()
+            {
+                return $this->filter->isNotCompleted();
+            }
+        };
+    }
+}
+class TaskCollection extends Collection
+{
+
 }
