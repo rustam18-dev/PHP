@@ -15,7 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+//       $schedule->command('app:say_hello 1 2', [
+//          '--subject' =>  'Привет из расписания'
+//       ])->everyMinute();
     }
 
     /**

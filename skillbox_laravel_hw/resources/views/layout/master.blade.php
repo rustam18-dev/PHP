@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>{{config('app.name')}}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
@@ -73,8 +73,8 @@
         }
     </style>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link rel="stylesheet" href="/css/app.css">
-    <script src="/js/app.js"></script>
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+
 </head>
 <body>
 
@@ -84,7 +84,10 @@
         @include('layout.flash_message')
     </div>
 
-<main class="container">
+<main class="container" id="app">
+    <div class="row">
+        <example-component></example-component>
+    </div>
     <div class="row mb-2">
 
         @yield('content')
@@ -102,6 +105,8 @@
 @include('layout.footer')
 
 
-
+<script src="{{ mix('/js/manifest.js') }}"></script>
+<script src="{{ mix('/js/vendor.js') }}"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
