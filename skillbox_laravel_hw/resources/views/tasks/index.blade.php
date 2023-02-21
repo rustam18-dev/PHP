@@ -10,7 +10,7 @@
                 @foreach($tasks as $task)
                     @include('tasks.item')
                 @endforeach
-
+{{--                @each('tasks.item', $tasks, 'task') // Идентичен верхней записи --}}
 @endsection
 
 

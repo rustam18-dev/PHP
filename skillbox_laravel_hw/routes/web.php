@@ -24,6 +24,7 @@ use App\Task;
 
 // Идентичен верхней записи
 Route::view('/', 'welcome');
+Route::view('/demo', 'demo');
 
 //Route::get('/test', function (\Illuminate\Http\Request $request ) {
 ////    \Session::put(['name' => 'test']);

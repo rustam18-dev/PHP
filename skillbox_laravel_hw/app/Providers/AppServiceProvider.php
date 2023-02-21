@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Service\Pushall;
 use App\Tag;
+use Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,5 +31,16 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layout.sidebar', function ($view) {
             $view->with('tagsCloud', Tag::tagsCloud());
         });
+
+       \Blade::component('components.alert', 'alert');
+
+       \Blade::directive('datetime', function ($value) {
+           return "<?= ($value)->toFormattedDateString() ?>";
+       });
+
+       \Blade::if('env', function ($env) {
+           return app()->environment($env);
+       });
+
     }
 }
