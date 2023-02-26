@@ -13,13 +13,13 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasFactory;
-    Use HasFactory;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $guarded = [];
+    protected $table = 'users';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,8 +41,10 @@ class User extends Authenticatable
 
 
 
-    public function tasks( )
+    public function tasks()
     {
         return $this->hasMany(Task::class, 'owner_id');
     }
+
+
 }

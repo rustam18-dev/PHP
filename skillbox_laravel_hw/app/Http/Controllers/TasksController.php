@@ -71,7 +71,7 @@ class TasksController extends Controller
 //           'body' => request('body'),
 //        ]);
     //TODO: можно сократить ещё
-        $task = Task::create($attributes);
+        Task::create($attributes);
 
         flash('Задача успешно создана!');
 

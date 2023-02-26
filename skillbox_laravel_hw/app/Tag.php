@@ -11,7 +11,7 @@ class Tag extends Model
 
     protected $guarded = [];
 
-    public function tasks()
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Task::class);
     }

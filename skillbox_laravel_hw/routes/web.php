@@ -66,7 +66,13 @@ Route::post('/tasks/{task}/steps', [TaskStepsController::class, 'store']);
 Route::post('/completed-steps/{step}', [CompletedStepsController::class, 'store']);
 Route::delete('/completed-steps/{step}', [CompletedStepsController::class, 'destroy']);
 
-
-
 Auth::routes();
+
+Route::middleware('auth')->post('/companies', function () {
+    $attributes = request()->validate(['name' => 'required']);
+    $attributes['owner_id'] = auth()->id();
+    
+
+    \App\Models\Company::create($attributes);
+});
 
