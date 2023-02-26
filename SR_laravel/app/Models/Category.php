@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tasks extends Model
+class Category extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+    protected $table = 'category';
 
-    public function category()
+
+    public function tasks()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(Tasks::class);
     }
+
 
 
 }

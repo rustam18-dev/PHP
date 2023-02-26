@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
-
+    protected $factory = [];
 //    public $fillable = ['title', 'body']; // снимает защиту с массивов
     public $guarded = [];
 

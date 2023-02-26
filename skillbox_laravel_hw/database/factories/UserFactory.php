@@ -2,12 +2,17 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
+
+
+
 class UserFactory extends Factory
 {
     /**
@@ -15,8 +20,10 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition()
     {
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),

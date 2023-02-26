@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Tasks;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Arg;
 
 class TasksController extends Controller
 {
     public function index()
     {
-        $task = Tasks::all();
-        return view('tasks.index', compact('task'));
+        $category_task = Tasks::all();
+        return view('tasks.index', compact('category_task'));
     }
 
     public function show(Tasks $task)
@@ -25,20 +27,23 @@ class TasksController extends Controller
 
     public function create()
     {
-        return view('tasks.create');
+        $categories = Category::all();
+        return view('tasks.create', compact('categories'));
     }
 
-    public function store(Request $attributes)
+    public function store(Request $request)
     {
-        $attributes->validate([
-           'title' => 'required|min:3',
-           'price' => 'required',
-           'description' => 'required',
-        ]);
 
-        Tasks::create($attributes->all());
+        $task = new Tasks;
+        $task->title = \request('title');
+        $task->price = \request('price');
+        $task->description = \request('description');
+        $task->image = request()->file('image')->store('public/images');
+        $task->category_id = \request('category_id');
+        $task->save();
+
         flash('Запись успешно создан!', 'success');
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     public function edit($id)
@@ -47,15 +52,27 @@ class TasksController extends Controller
         return view('tasks.edit', compact('task'));
     }
 
-    public function update(Tasks $task)
+    public function update(Request $request, Tasks $task)
     {
-        $attributes = \request()->validate([
-           'title' => 'required|min:3',
-           'price' => 'required',
-           'description' => 'required'
+
+        $attributes =  \request()->validate([
+            'title' => 'required|min:2',
+            'price' => 'required|min:2',
+            'image' => 'required',
+            'description' => 'required',
         ]);
 
         $task->update($attributes);
+
+        if ($request->hasFile('image')) {
+            // удалить старое изображение из хранилища
+            Storage::delete($task->image);
+
+            // сохранить новое изображение
+            $task->image = $request->file('image')->store('public/images');
+        }
+
+        $task->save();
 
         flash('Запись обновлён!', 'warning');
 

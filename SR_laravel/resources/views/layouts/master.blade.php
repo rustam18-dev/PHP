@@ -19,6 +19,28 @@
     .blog-footer p:last-child {
         margin-bottom: 0;
     }
+
+    .badge_edit {
+        font-size: 7px;
+        text-decoration: none;
+        color: #a2a206;
+        margin-right: 3px ;
+        border-radius: 6px;
+        padding: -5px;
+    }
+    .badge_delete {
+        color: #c90404;
+        font-size: 7px;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+    .badge_delete, .badge_edit {
+        display: flex;
+        align-items: center;
+        padding-top: -5px;
+        font-weight: bold;
+    }
+
 </style>
 <body>
 <div class="container">
@@ -28,7 +50,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        @include('layouts.sidebar')
+            @include('layouts.sidebar')
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             @include('layouts.flash_message')
 
