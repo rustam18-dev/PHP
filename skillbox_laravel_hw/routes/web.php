@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompletedStepsController;
+use App\Http\Controllers\PushServiceController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TaskStepsController;
 use App\Service\Pushall;
@@ -26,12 +27,115 @@ use App\Task;
 Route::view('/', 'welcome');
 Route::view('/demo', 'demo');
 
+
+Route::get('/test', function () {
+//    dump(\DB::select('select * from tasks where  id = ?', [1]));
+//    dump(\DB::insert('insert  into tasks  (title, body, owner_id)  values (?, ?, ?)', ['User name', 'username@gmail.com', '1']));
+//   dump(\DB::update("update tasks set title = 'FirstTasks', body = 'FirstTasksWithDescription' where id = ?", [1]) );
+//    dump(\DB::delete("delete from tasks"));
+//    dump(\DB::statement('drop table tasks'));
+//    dump(\DB::table('tasks')->count());
+//    dump(\DB::table('tasks')->max('id'));
+//    dump(\DB::table('tasks')->average('id'));
+//    dump(\DB::table('tasks')->where('id', 6)->doesntExist());
+//    dump(\DB::table('tasks')->select('type')->distinct()->get());
+//    dump(\DB::table('steps')
+//        ->selectRaw('id * ? as big_id', [10])
+//        ->get()
+//    );
+//    dump(\DB::table('tasks')->select('id')->orderByRaw('id ASC')->get());
+//    dump(\DB::table('users')
+//        ->join('tasks', 'users.id', '=', 'tasks.owner_id')
+//        ->join('companies', 'users.id', '=', 'companies.owner_id')
+//        ->select('users.id', 'users.email', 'tasks.title', 'companies.name')
+//        ->get()
+//    );
+//    dump(\DB::table('users')
+//        ->leftJoin('companies', 'users.id', '=', 'companies.owner_id')
+//        ->select('users.id', 'users.email', 'companies.name')
+//        ->get()
+////    );
+//    dump(\DB::table('users')
+//        ->crossJoin('companies')
+//        ->select('users.id', 'users.email', 'companies.name')
+//        ->get()
+//    );
+//      dump(\DB::table('tasks')
+//         ->where('type','Old')
+//         ->orWhere('type', 'New')
+//         ->get()
+//      );
+//    dump(\DB::table('tasks')
+//        ->whereIn('id', [1, 2])
+//        ->whereNotIn('id', [1, 2])
+//            ->select('id', 'title')
+//        ->get()
+//    );
+//    dump(\DB::table('tasks')
+//        ->whereNull('options')
+//        ->whereNotNull('options')
+//        ->get()
+//    );
+//    dump(\DB::table('tasks')
+//        ->whereDate('created_at', '2023-03-08')
+//        ->whereMonth('created_at', '12')
+//        ->whereDay('created_at', '31')
+//        ->whereDay('created_at', '2009')
+//        ->whereDay('created_at', '9:37:21')
+//        ->get()
+//    );
+//    dump(\DB::table('tasks')
+//        ->whereColumn('updated_at', '>', 'created_at')
+//        ->get()
+//    );
+//    dump(\DB::table('users')
+//        ->whereExists(function ($query) {
+//            $query
+//                ->select(DB::raw(1))
+//                ->from('tasks')
+//                ->whereRaw('tasks.owner_id = users.id')
+//                ->get();
+//        })
+//    );
+//    dump(\DB::table('tasks')
+//        ->oldest('id')
+//        ->latest('id')
+//        ->orderBy('id')
+//        ->orderByDesc('id')
+//        ->get()
+//    );
+//    dump(\DB::table('tasks')
+//        ->inRandomOrder()
+//        ->select('id', 'title')
+//        ->get()
+//    );
+//    dump(\DB::table('tasks')
+//        ->skip(2)
+//        ->take(1)
+//        ->get()
+//    );
+//    dump(\DB::table('tasks')
+//        ->offset(2)
+//        ->limit(1)
+//        ->get()
+//    );
+    dump(\DB::table('companies')
+        ->insert([
+            ['name' => 'Qsoft', 'owner_id' => 1],
+            ['name' => 'Skillbox', 'owner_id' => 1],
+            ['name' => 'Name', 'owner_id' => 1],
+        ])
+    );
+
+
+
+});
 //Route::get('/test', function (\Illuminate\Http\Request $request ) {
 ////    \Session::put(['name' => 'test']);
 ////    session()->get('name');
 ////    session(['name' => 'test']);
 //
-//    dd($request->session()->all());
+//    dd($request->session()->al));
 //
 //    return session('test', 'defaultValue');
 //});
@@ -39,7 +143,7 @@ Route::view('/demo', 'demo');
 
 /**
  * GET /tasks (index)
- * GET /tasks/create (create)
+ * GET /tasks/create (create)l(
  * GET /tasks/1 (show)
  * POST /tasks (store)
  * GET /tasks/1/edit (edit)
@@ -71,8 +175,10 @@ Auth::routes();
 Route::middleware('auth')->post('/companies', function () {
     $attributes = request()->validate(['name' => 'required']);
     $attributes['owner_id'] = auth()->id();
-    
 
     \App\Models\Company::create($attributes);
 });
+
+Route::get('/service', [PushServiceController::class, 'form']);
+Route::post('/service', [PushServiceController::class, 'send']);
 

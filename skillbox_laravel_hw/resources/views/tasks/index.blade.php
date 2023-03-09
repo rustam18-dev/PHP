@@ -7,10 +7,16 @@
                 Созданные Задачи
             </h3>
 
-                @foreach($tasks as $task)
-                    @include('tasks.item')
-                @endforeach
+             @forelse($tasks as $task)
+                @include('tasks.item')
+             @empty
+                <p>Нету расписанных задач, можете отдыхать!</p>
+             @endforelse
 {{--                @each('tasks.item', $tasks, 'task') // Идентичен верхней записи --}}
+
+          {{ $tasks->links() }}
+
+
 @endsection
 
 

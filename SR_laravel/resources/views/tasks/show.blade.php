@@ -16,9 +16,9 @@
             <tbody>
             <tr>
                 <td>{{$task->id}}</td>
-                <td>{{$task->title}}</td>
+                <td>{{$task->name}}</td>
                 <td>{{$task->price}}</td>
-                <td class="pb-n2"><img src="{{Storage::url($task->image) }}" alt="{{ $task->title }}" width="50" height="50"></td>
+                <td class="pb-n2"><img src="{{Storage::url($task->image) }}" alt="{{ $task->name }}" width="50" height="50"></td>
                 <td>{{$task->description}}</td>
                 <td class="d-flex pb-4">
 

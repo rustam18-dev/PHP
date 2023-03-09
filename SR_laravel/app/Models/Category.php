@@ -13,9 +13,9 @@ class Category extends Model
     protected $table = 'category';
 
 
-    public function tasks()
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Tasks::class);
+        return $this->hasMany(Tasks::class, 'owner_id');
     }
 
 

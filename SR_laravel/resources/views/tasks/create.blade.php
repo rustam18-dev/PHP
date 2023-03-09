@@ -5,7 +5,7 @@
         @include('layouts.errors')
         <div class="mb-3">
             <label  class="form-label">Название задачи</label>
-            <input type="text" class="form-control" name="title" value="{{old('title')}}">
+            <input type="text" class="form-control" name="name" value="{{old('name')}}">
         </div>
         <div class="mb-3">
             <label  class="form-label">Цена</label>
@@ -20,9 +20,9 @@
             <textarea  class="form-control" name="description">{{old('description')}}</textarea>
         </div>
         <div class="mb-3">
-            <label class="form-label">Описание</label>
+            <label class="form-label">Категория</label>
             <select class="" name="category_id">
-                @foreach($categories as $category)
+            @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                 @endforeach
             </select>

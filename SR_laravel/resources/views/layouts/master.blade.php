@@ -42,7 +42,10 @@
     }
 
 </style>
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 <body>
+
 <div class="container">
     @include('layouts.header')
 
@@ -50,7 +53,10 @@
 
 <div class="container-fluid">
     <div class="row">
+        @section('sidebar')
             @include('layouts.sidebar')
+        @show
+
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             @include('layouts.flash_message')
 

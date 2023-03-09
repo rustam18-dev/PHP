@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Tasks;
-use Illuminate\Console\View\Components\Task;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Arg;
 
 class TasksController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $category_task = Tasks::all();
+        $category_task = auth()->user()->tasks()->with('category')->orderBy('id', 'asc')->paginate(2);
         return view('tasks.index', compact('category_task'));
     }
 
@@ -31,19 +33,21 @@ class TasksController extends Controller
         return view('tasks.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store()
     {
+        $attributes = \request()->validate([
+            'name' => 'required|min:3',
+            'price' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'category_id' => 'required|exists:category,id',
+        ]);
 
-        $task = new Tasks;
-        $task->title = \request('title');
-        $task->price = \request('price');
-        $task->description = \request('description');
-        $task->image = request()->file('image')->store('public/images');
-        $task->category_id = \request('category_id');
-        $task->save();
+        $attributes['owner_id'] = auth()->id();
+        Tasks::create($attributes);
 
         flash('Запись успешно создан!', 'success');
-        return redirect()->route('home');
+        return redirect('/');
     }
 
     public function edit($id)
@@ -56,7 +60,7 @@ class TasksController extends Controller
     {
 
         $attributes =  \request()->validate([
-            'title' => 'required|min:2',
+            'name' => 'required|min:2',
             'price' => 'required|min:2',
             'image' => 'required',
             'description' => 'required',

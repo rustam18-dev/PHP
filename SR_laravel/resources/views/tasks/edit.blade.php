@@ -6,7 +6,7 @@
             @include('layouts.errors')
             <div class="mb-3">
                 <label  class="form-label">Название задачи</label>
-                <input type="text" class="form-control" name="title" value="{{old('title', $task->title)}}">
+                <input type="text" class="form-control" name="name" value="{{old('name', $task->name)}}">
             </div>
             <div class="mb-3">
                 <label  class="form-label">Цена</label>

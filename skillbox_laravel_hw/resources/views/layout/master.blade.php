@@ -81,8 +81,10 @@
         .blog-footer p:last-child {
             margin-bottom: 0;
         }
+
     </style>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
 </head>
@@ -114,12 +116,15 @@
 
 @include('layout.footer')
 
-@push('scripts')
-    <script src="{{ mix('/js/manifest.js') }}"></script>
-    <script src="{{ mix('/js/vendor.js') }}"></script>
-    <script src="{{ mix('/js/app.js') }}"></script>
+{{--@push('scripts')--}}
+{{--    <script src="{{ mix('/js/manifest.js') }}"></script>--}}
+{{--    <script src="{{ mix('/js/vendor.js') }}"></script>--}}
+{{--    <script src="{{ mix('/js/app.js') }}"></script>--}}
+{{--@endpush--}}
 
-@endpush
-    @stack('script')
+    @prepend('scripts')
+    @endprepend
+
+    @stack('scripts')
 </body>
 </html>

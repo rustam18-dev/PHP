@@ -19,7 +19,9 @@ class TasksController extends Controller
     public function index()
     {
 
-        $tasks = auth()->user()->tasks()->with('tags')->latest()->get();
+        $tasks = auth()->user()->tasks()->with('tags')->latest()->simplePaginate(17);
+
+//        $tasks->withPath('/custom/url');
 
         return view('tasks.index', compact('tasks'));
     }

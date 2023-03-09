@@ -55,6 +55,17 @@
                 <button class="btn btn-primary" type="submit">Добавить</button>
             </form>
 
+        @include('layout.errors')
+
+            <hr>
+            @forelse($task->history as $item)
+
+                <p>{{ $item->email }} - {{ $item->pivot->created_at->diffForHumans() }} - {{ $item->pivot->before }} - {{ $item->pivot->after }}</p>
+            @empty
+                <p>Нет истории изменении</p>
+            @endforelse
+
+
             <hr>
             <a href="/tasks">Вернуться к списку</a>
             <hr>

@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Tasks;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
-   public function index(Category $category)
+
+    public function index()
    {
-       $category = Category::all();
+       $category = Category::get();
        return view('category.index', compact('category'));
    }
 
@@ -26,11 +28,13 @@ class CategoryController extends Controller
        return view('category.create');
    }
 
-   public function store(Category $category)
+   public function store(Request $attributes)
    {
-       $category = new Category;
-       $category->title = \request('title');
-       $category->save();
+       $attributes->validate([
+           'title' => 'required|min:2',
+       ]);
+
+       Category::create($attributes->all());
 
        flash('Запись успешно создан!', 'success');
        return redirect('/category');
