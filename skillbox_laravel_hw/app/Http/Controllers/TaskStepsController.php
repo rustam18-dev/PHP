@@ -3,22 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Step;
+use App\Tag;
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class TaskStepsController extends Controller
 {
     public function store(Task $task)
     {
-        $task->addStep(\request()->validate([
+        $step = $task->addStep(\request()->validate([
             'description' => 'required|min:5',
 
         ]));
 
-//        Step::create([
-//           'description' => \request('description'),
-//            'task_id' => $task->id,
-//        ]);
+        $tagsToAttach = collect(explode(', ', \request('tags')))->keyBy(function ($item) { return $item; });
+
+        $syncIds = [];
+        foreach ($tagsToAttach as $tag) {
+            $tag = Tag::firstOrCreate(['name' => $tag]);
+
+            $syncIds[] = $tag->id;
+        }
+
+        $step->tags()->sync($syncIds);
 
         return back();
     }

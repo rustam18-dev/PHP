@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Step;
 use App\Task;
 use Database\Seeders\UsersTableSeeder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -74,5 +75,14 @@ class User extends Authenticatable
         return (bool)rand(0, 1);
     }
 
+    public function steps()
+    {
+        return $this->hasManyThrough(Step::class, Task::class, 'owner_id');
+    }
+
+    public function avatar()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 
 }

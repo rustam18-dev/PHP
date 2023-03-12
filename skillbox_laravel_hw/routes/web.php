@@ -119,12 +119,14 @@ Route::get('/test', function () {
 //        ->limit(1)
 //        ->get()
 //    );
-    dump(\DB::table('companies')
-        ->insert([
-            ['name' => 'Qsoft', 'owner_id' => 1],
-            ['name' => 'Skillbox', 'owner_id' => 1],
-            ['name' => 'Name', 'owner_id' => 1],
+
+    dump(\App\Models\Image::with('imageable')
+        ->get()
+        ->loadMorph('imageable', [
+            \App\Models\User::class => ['company', 'tasks'],
+            \App\Models\Company::class => ['user']
         ])
+        ->toArray()
     );
 
 

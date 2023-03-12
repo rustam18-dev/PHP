@@ -13,7 +13,12 @@ class Tag extends Model
 
     public function tasks(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Task::class);
+        return $this->morphedByMany(\App\Task::class, 'taggable');
+    }
+
+    public function steps()
+    {
+        return $this->morphedByMany(\App\Step::class, 'taggable');
     }
 
     public function getRouteKeyName()

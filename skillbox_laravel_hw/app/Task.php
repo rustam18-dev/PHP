@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Events\TaskCreated;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -100,7 +101,7 @@ class Task extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
     public function addStep($attributes)
@@ -117,5 +118,15 @@ class Task extends Model
     {
         return $this->belongsToMany(User::class, 'task_histories')
             ->withPivot(['before', 'after'])->withTimestamps();
+    }
+
+    public function company()
+    {
+        return $this->hasOneThrough(Company::class, User::class, 'id', 'owner_id');
+    }
+
+    public function comments()
+    {
+        return $this->morphToMany('App\Comment', 'commentable');
     }
 }

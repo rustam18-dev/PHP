@@ -6,7 +6,8 @@
 {{--{{ $paginator->lastPage() }}--}}
 {{--{{ $paginator->nextPageUrl() }}--}}
 {{--{{ $paginator->onFirstPage() }}--}}
-{{ $paginator->perPage() }}
+{{--{{ $paginator->perPage() }}--}}
+
 @if ($paginator->hasPages())
         <nav class="blog-pagination" role="navigation">
             {{-- Previous Page Link --}}
